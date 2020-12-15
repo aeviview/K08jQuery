@@ -4,54 +4,48 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>JQ03Post.jsp</title>
+<title>JQ03PostOracle.jsp</title>
 <link rel="stylesheet" href="../common/bootstrap4.5.3/css/bootstrap.css" />
 <script src="../common/jquery/jquery-3.5.1.js"></script>
 
 <script>
 
-/*
-	<jQuery에서 제공하는 Ajax관련 메소드>
-	3. $.post() : HTTP post방식으로 서버로 요청할 때 사용한다.
-		형식] $.get()메소드와 요청방식만 다를 뿐 사용법은 완전히 동일하다.
- */
 $(function()
 {
 	$('#btnLogin2').click(function()
 	{
+		//요청할 서버의 URL
+		var s_url = "./common/03PostLoginOracle.jsp";
+		/*
+			<form> 태그의 하위태그들을 name속성을 통해 JSON으로 조립해준다.
+			전송할 폼값이 많을 경우 주로 사용한다.
+		*/
+		var s_params = $('#loginFrm').serialize();
+			
 		$.post
-		//인자(1) : 요청할 서버의 URL(혹은 경로)
 		(
-			'./common/03PostLogin.jsp',
+			s_url,
+			s_params,
+			
+			function(resData)
 			{
-				//인자(2) : 파라미터(JSON으로 조립해야함)
-				'user_id':$('#user_id').val(),
-				'user_pw':$('#user_pw').val()
-			},
-			//인자(3) : 요청 후 성공시 실행되는 콜백메소드
-			function(responseData)
-			{
-				console.log(responseData);
-				//서버로부터 받은 콜백데이터가 JSON형일 때는 파싱을 위해 아래 함수를 사용한다!
-				var rData = JSON.parse(responseData);
-				/*
-					파싱한 데이터를 통해 각 value에 접근할 수 있다.
-					파싱변수.key값 => value가 반환된다.
-				*/
-				if(rData.result==1)
+				var d = JSON.parse(resData);
+
+				if(d.result==1)
 				{
-					alert('로그인 성공입니다.');
-					var disTxt = "<h3>"+ rData.user_name + "(" + rData.user_id + ")님 반갑습니다.</h3>";
-					
-					$('#loginTable').html(disTxt);
+					console.log(d.message);
+					//JSON에 포함된 HTML값을 얻어와서 삽입
+					$('#loginFrm').html(d.html);
+					//로그인 버튼은 숨김처리한다.
+					$('#btnLogin2').hide();
 				}
 				else
 				{
-					alert('로그인 실패입니다.');
-					var disTxt = "<h3>로그인실패 ㅠㅠ;</h3>";
-					
-					$('#jsonDisplay').html(disTxt);
+					alert(d.message);
 				}
+					
+				//콜백되는 데이터를 그대로 받아서 #jsonDisplay에 저장하고 text형태로 출력한다.
+				$('#jsonDisplay').text(resData);
 			}
 		);
 	});
@@ -61,7 +55,7 @@ function checkFrm()
 {
 	var f = document.getElementById("loginFrm");
 	f.method = "post";
-	f.action = "./common/03PostLogin.jsp";
+	f.action = "./common/03PostLoginOracle.jsp";
 }
 </script>
 
@@ -69,7 +63,7 @@ function checkFrm()
 <body>
 <div class="container">
 	<h2>$.post() 메소드 사용하기</h2>	
-	<h3>로그인 구현하기 - JDBC연동X</h3>
+	<h3>로그인 구현하기 - JDBC연동O</h3>
 	<div class="row" id="loginTable">
 		<form id="loginFrm" onsubmit="return checkFrm();">
 			<table class="table table-bordered">
@@ -84,7 +78,7 @@ function checkFrm()
 					<td>패스워드</td>
 					<td>
 						<input type="password" id="user_pw" 
-							name="user_pw" value="1234" />
+							name="user_pw" value="1111" />
 					</td>
 				</tr>
 			</table>
