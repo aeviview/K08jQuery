@@ -1,11 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>JQ03Bind.jsp</title>
-<link rel="stylesheet" href="../common/bootstrap4.5.3/css/bootstrap.css" />
 <script src="../common/jquery/jquery-3.5.1.js"></script>
 
 <!-- 왜그런지 모르겠는데 한글이 다 깨짐 ㅠㅠ -->

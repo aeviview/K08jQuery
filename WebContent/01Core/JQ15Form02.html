@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>JQ15Form02.html</title>
-	<script src="../common/jquery/jquery-3.5.1.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>JQ15Form02.html</title>
+<script src="../common/jquery/jquery-3.5.1.js"></script>
 
 <script>
 $(function()
@@ -90,9 +89,14 @@ $(function()
 		if(compareStr1==compareStr2)
 		{
 			//일치할 때
-			$('#msg').html('<b style="color:red;">')
+			$('#msg').html('<b style="color:red;">암호가 일치합니다.</b>');
 		}
-	}
+		else
+		{
+			//일치하지 않을 때
+			$('#msg').html('<b>암호가 틀립니다.</b>').css('color','black');
+		}
+	});
 	
 	
 	//<맨 밑에 이메일 선택 부분> 이메일 select선택시 도메인 부분 채워주기
