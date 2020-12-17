@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>JQ00Test.jsp</title>
+<script src="../common/jquery/jquery-3.5.1.js"></script>
+
+<script>
+
+$(function()
+{
+	$("#title").css("color","red");	
+
+
+	$(function()
+	{
+		$("*").css("border", "1px solid black");	
+	});
+	
+	$(function()
+	{
+		$(".title2").css("background-color", "orange");
+	});
+	
+});
+</script>
+
+</head>
+<body>
+	<h2 id="title">아이디 선택자를 이용한 제목의 색깔은 RED</h2>
+	<h2>전체선택자</h2>
+	<h2 class="title2">클라쓰선택자</h2>
+</body>
+</html>

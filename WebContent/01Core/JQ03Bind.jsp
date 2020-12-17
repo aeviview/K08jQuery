@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -5,7 +7,7 @@
 <title>JQ03Bind.jsp</title>
 <script src="../common/jquery/jquery-3.5.1.js"></script>
 
-<!-- 왜그런지 모르겠는데 한글이 다 깨짐 ㅠㅠ -->
+
 
 <script>
 	/*
