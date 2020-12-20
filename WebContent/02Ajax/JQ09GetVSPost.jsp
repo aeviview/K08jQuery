@@ -15,7 +15,7 @@ $(function()
 	{
 		$.ajax(
 		{
-			url : "./common/ParamProc.jsp",
+			url : "./common/09ParamProc.jsp",
 			type : "get",
 			contentType : "text/html;charset:utf-8;",
 			data :
@@ -40,32 +40,32 @@ $(function()
 	
 	//여기부터 작성합시다!!
 	$('#Button02').click(function()
+	{
+		$.ajax(
+		{
+			url : "./common/09ParamProc.jsp",
+			type : "post",
+			contentType : "application/x-www-form-urlencoded;charset:utf-8;",
+			data :
 			{
-				$.ajax(
-				{
-					url : "./common/ParamProc.jsp",
-					type : "post",
-					contentType : "text/html;charset:utf-8;",
-					data :
-					{
-						method : 'GET',
-						price : $("#price").val(),
-						name : $("#name").val()
-					},
-					dataType : "html",
-					
-					success : function(d)
-					{
-						alert("성공Callback : "+d);
-						$('#contents').html(d).css("fontSize", "3em").css("color", "red");;
-					},
-					error : function(e)
-					{
-						alert("실패Callback : "+e.status+":"+e.statusText);
-					}
-				});
-			});
-}
+				method : 'post',
+				price : $("#price").val(),
+				name : $("#name").val()
+			},
+			dataType : "html",
+			
+			success : function(d)
+			{
+				alert("성공Callback : "+d);
+				$('#contents').html(d).css("fontSize", "3em").css("color", "red");;
+			},
+			error : function(e)
+			{
+				alert("실패Callback : "+e.status+":"+e.statusText);
+			}
+		});
+	});
+});
 </script>
 
 </head>

@@ -11,8 +11,16 @@ ArrayList<String> sidoList = dao.getSido();
 pageContext.setAttribute("sidoList", sidoList);
 %>
 
-<script type="text/javascript">
-$(document).ready(function()
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>JQ08DynamicAddress.jsp</title>
+<link rel="stylesheet" href="../common/bootstrap4.5.3/css/bootstrap.css" />
+<script src="../common/jquery/jquery-3.5.1.js"></script>
+
+<script>
+$(function()
 {
 	$('#sido').change(function()
 	{
@@ -65,13 +73,6 @@ $(document).ready(function()
 });
 </script>
 
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>JQ08DynamicAddress.jsp</title>
-<link rel="stylesheet" href="../common/bootstrap4.5.3/css/bootstrap.css" />
-<script src="../common/jquery/jquery-3.5.1.js"></script>
 </head>
 <body>
 	<div class="container">
